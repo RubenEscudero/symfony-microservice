@@ -19,6 +19,11 @@ class ProductsController
             );
         }
 
+        // 1. Deserialize json data into a DTO
+        // 2. Pass the Enquiry into a promotion filter
+            // the appropriate promotion will be applied
+        // 3. Return the modified Enquiry
+
         return new JsonResponse([
             'quantity' => 5,
             'request_location' => 'UK',
