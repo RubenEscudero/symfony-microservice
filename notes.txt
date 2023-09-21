@@ -4,3 +4,18 @@
 Promotion
 - Does this apply?
 - Add to the EnquiryDTO or Modify the DTO
+
+
+//CLASE DTO
+El DTO se utiliza para controlar y modificar los datos recibidos en la petición, se crea una clase Enquiry que es la
+encargada de definir los parámetros que tiene el objeto, en este caso Promotion.
+
+Para tener definida la clase LowestPriceEnquiry es necesario deserializar el json recibido implementando la clase
+Serializer de Symfony.
+
+//INTERFACES
+Las interfaces sirven para definir una serie de funciones comunes a otras clases como por ejemplo:
+en el directorio de Filter se define la interfaz PromotionsFilterInterface con la función apply que será la encargada
+de aplicar el filtro a la promoción en los diferentes filtros que se creen como LowestPriceFilter.
+
+Si una interfaz está implementada por una sola clase Symfony sabe reconocer esa clase utilizando esa interfaz.
