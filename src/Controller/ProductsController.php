@@ -55,14 +55,14 @@ class ProductsController extends AbstractController
         $promotions = $this->entityManager->getRepository(Promotion::class)->findValidForProduct(
             $product,
             date_create_immutable($lowestPriceEnquiry->getRequestDate())
-        );
+        ); // Handling if promotion not found
 
-        $modifiedEnquiry = $promotionsFilter->apply($lowestPriceEnquiry, $promotions);
+        $modifiedEnquiry = $promotionsFilter->apply($lowestPriceEnquiry, ...$promotions);
 
         // 3. Return the modified Enquiry
         $responseContent = $serializer->serialize($modifiedEnquiry, 'json');
 
-        return new Response($responseContent, 200);
+        return new Response($responseContent, 200, ['Content-Type' => 'application/json']);
     }
 
     #[Route('/products/{id}/promotions', name: 'promotion', methods: 'GET')]
